@@ -1,0 +1,26 @@
+[package]
+name = "otel-http-client"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+opentelemetry = { version = "0.30", features = ["metrics", "logs"] }
+opentelemetry_sdk = { version = "0.30", features = [
+    "metrics",
+    "logs",
+    "spec_unstable_metrics_views",
+] }
+opentelemetry-otlp = { version = "0.30", default-features = false, features = [
+    "http-proto",
+    "http-json",
+    "reqwest-blocking-client",
+    "trace",
+    "metrics",
+    "logs",
+] }
+opentelemetry-appender-tracing = "0.30"
+tokio = { version = "1", features = ["macros", "rt-multi-thread", "signal", "time", "net", "io-util"] }
+tokio-native-tls = "0.3"
+url = "2"
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter", "fmt"] }
